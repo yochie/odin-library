@@ -40,6 +40,7 @@ img {
 body {
     display: grid;
     grid-template-columns: auto 1fr;
+    height: 100vh;
 }
 
 .library {
@@ -47,6 +48,7 @@ body {
     flex-wrap: wrap;
     gap: 30px;
     margin: 30px;
+    align-content: start;
 }
 
 .book {
@@ -76,13 +78,51 @@ body {
     background-color: rgba(214, 74, 74, 0.741);
 }
 
+.form-section {
+    background-color: green;
+    padding: 30px;
+}
+
+.form-section h2 {
+    font-size: 1.7rem;
+}
 
 .form-section.hide {
     display: none;
 }
 
 .form-section.display {
+    display: block;
+}
+
+.form-section .book-form {
+    margin-top: 20px;
     display: grid;
+    row-gap: 20px;
+}
+
+.form-section .book-form .form-field {
+    display: grid;
+    row-gap: 10px;
+}
+
+.form-section input[type="text"],
+.form-section input[type="number"] {
+    border-radius: 5px;
+    padding: 5px 10px;
+}
+
+.form-section input[type="checkbox"]{
+    height: 20px;
+}
+
+.form-section button[type="submit"]{
+    margin-top: 20px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: none;
 }
 
 button.display-form {
