@@ -41,10 +41,22 @@ function displayBooks() {
         read.textContent = `Read: ${book.read ? "Yes" : "No"}`;
         row.appendChild(read);
 
-        let button = document.createElement("button");
-        button.textContent = book.read ? "Mark unread" : "Mark read";
-        button.setAttribute("data-attribute", index);
-        row.appendChild(button);
+        let buttonList = document.createElement("div");
+        buttonList.classList.add("button-list");
+
+        let readButton = document.createElement("button");
+        readButton.classList.add("read");
+        readButton.textContent = book.read ? "Unread" : "Read";
+        readButton.setAttribute("data-attribute", index);
+        buttonList.appendChild(readButton);
+
+        let deleteButton = document.createElement("button");
+        deleteButton.classList.add("delete");
+        deleteButton.textContent = "Delete";
+        deleteButton.setAttribute("data-attribute", index);
+        buttonList.appendChild(deleteButton);
+
+        row.appendChild(buttonList);
 
         children.push(row);
         index++;
@@ -57,7 +69,12 @@ libraryDOM.addEventListener("click", (event) => {
         return;
 
     const id = event.target.getAttribute("data-attribute");
-    myLibrary[id].toggleRead();
+
+    if (event.target.classList.contains("delete")) {
+        myLibrary.splice(id, 1);
+    } else if (event.target.classList.contains("read")) {
+        myLibrary[id].toggleRead();
+    }
 
     displayBooks();
 });
