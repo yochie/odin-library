@@ -1,6 +1,6 @@
 const myLibrary = [];
 const libraryDOM = document.querySelector(".library");
-
+const bookForm = document.querySelector(".book-form")
 
 function Book(title, author, pages, read) {
     this.title = title;
@@ -78,6 +78,21 @@ libraryDOM.addEventListener("click", (event) => {
 
     displayBooks();
 });
+
+bookForm.addEventListener("submit", (event)=>{
+    event.preventDefault();
+    createBookFromForm();
+    displayBooks();
+});
+
+function createBookFromForm(){
+    let formData = new FormData(bookForm);
+    const title = formData.get("title");
+    const author = formData.get("author");
+    const pages = formData.get("pages");
+    const read = formData.get("read");
+    addBookToLibrary(title, author, pages, read);
+}
 
 //test
 addBookToLibrary("the hobbit", "jr tolkien", 100, true);
