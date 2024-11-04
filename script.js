@@ -43,6 +43,7 @@ function displayBooks(){
 
         let button = document.createElement("button");
         button.textContent = book.read ? "Mark unread" : "Mark read";
+        row.appendChild(button);
 
         library.appendChild(row);
         index++;
