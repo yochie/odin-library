@@ -55,3 +55,19 @@ img {
     font-size: 1.5rem;
     font-weight: bold;
 }
+
+.book .button-list {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.book button {
+    border-radius: 5px;
+    padding: 5px 15px;
+}
+
+.book button.delete {
+    background-color: rgba(214, 74, 74, 0.741);
+}
