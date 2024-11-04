@@ -37,6 +37,10 @@ img {
 }
 
 /* end normalize */
+body {
+    display: grid;
+    grid-template-columns: auto 1fr;
+}
 
 .library {
     display: flex;
@@ -70,4 +74,25 @@ img {
 
 .book button.delete {
     background-color: rgba(214, 74, 74, 0.741);
+}
+
+
+.form-section.hide {
+    display: none;
+}
+
+.form-section.display {
+    display: grid;
+}
+
+button.display-form {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    padding: 10px 40px;
+    background-color: green;
+    font-size: 3rem;
+    font-weight: bold;
+    border-radius: 5px;
+    border: none;
 }

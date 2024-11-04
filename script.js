@@ -1,6 +1,9 @@
 const myLibrary = [];
 const libraryDOM = document.querySelector(".library");
+const formSection = document.querySelector(".form-section");
 const bookForm = document.querySelector(".book-form")
+const displayForm = document.querySelector(".display-form");
+
 
 function Book(title, author, pages, read) {
     this.title = title;
@@ -84,6 +87,18 @@ bookForm.addEventListener("submit", (event)=>{
     createBookFromForm();
     displayBooks();
 });
+
+displayForm.addEventListener("click", (event) => {
+    toggleFormDisplay();
+});
+
+function toggleFormDisplay(){
+    if(formSection.classList.contains("hide")){
+        formSection.classList.replace("hide", "display");
+    } else {
+        formSection.classList.replace("display", "hide");
+    }
+}
 
 function createBookFromForm(){
     let formData = new FormData(bookForm);
