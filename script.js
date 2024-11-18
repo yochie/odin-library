@@ -1,4 +1,3 @@
-const myLibrary = [];
 const libraryDOM = document.querySelector(".library");
 const formSection = document.querySelector(".form-section");
 const bookForm = document.querySelector(".book-form")
@@ -18,15 +17,33 @@ class Book {
     }
 }
 
-function addBookToLibrary(title, author, pages, read) {
-    let newBook = new Book(title, author, pages, read);
-    myLibrary.push(newBook);
+class Library {
+    books;
+
+    constructor() {
+        this.books = [];
+    }
+
+    addBookToLibrary(title, author, pages, read) {
+        const newBook = new Book(title, author, pages, read);
+        this.books.push(newBook);
+    }
+
+    remove(id) {
+        this.books.splice(id, 1);
+    }
+
+    toggleRead(id) {
+        this.books[id].toggleRead();
+    }
+
 }
+const myLibrary = new Library();
 
 function displayBooks() {
     let children = [];
     let index = 0;
-    for (let book of myLibrary) {
+    for (let book of myLibrary.books) {
         let row = document.createElement("div");
         row.classList.add("book");
 
@@ -76,9 +93,9 @@ libraryDOM.addEventListener("click", (event) => {
     const id = event.target.getAttribute("data-attribute");
 
     if (event.target.classList.contains("delete")) {
-        myLibrary.splice(id, 1);
+        myLibrary.remove(id);
     } else if (event.target.classList.contains("read")) {
-        myLibrary[id].toggleRead();
+        myLibrary.toggleRead(id);
     }
 
     displayBooks();
@@ -108,13 +125,13 @@ function createBookFromForm() {
     const author = formData.get("author");
     const pages = formData.get("pages");
     const read = formData.get("read");
-    addBookToLibrary(title, author, pages, read);
+    myLibrary.addBookToLibrary(title, author, pages, read);
 }
 
 //test
-addBookToLibrary("the hobbit", "jr tolkien", 100, true);
-addBookToLibrary("the hobbit 2", "jr tolkien", 200);
-addBookToLibrary("lord of the rings", "jr tolkien", 500);
+myLibrary.addBookToLibrary("the hobbit", "jr tolkien", 100, true);
+myLibrary.addBookToLibrary("the hobbit 2", "jr tolkien", 200);
+myLibrary.addBookToLibrary("lord of the rings", "jr tolkien", 500);
 console.log(myLibrary);
 
 displayBooks();
