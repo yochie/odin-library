@@ -4,16 +4,18 @@ const formSection = document.querySelector(".form-section");
 const bookForm = document.querySelector(".book-form")
 const displayForm = document.querySelector(".display-form");
 
+class Book {
 
-function Book(title, author, pages, read) {
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-    this.read = read;
-}
+    constructor(title, author, pages, read) {
+        this.title = title;
+        this.author = author;
+        this.pages = pages;
+        this.read = read;
+    }
 
-Book.prototype.toggleRead = function () {
-    this.read = !this.read;
+    toggleRead() {
+        this.read = !this.read;
+    }
 }
 
 function addBookToLibrary(title, author, pages, read) {
@@ -82,7 +84,7 @@ libraryDOM.addEventListener("click", (event) => {
     displayBooks();
 });
 
-bookForm.addEventListener("submit", (event)=>{
+bookForm.addEventListener("submit", (event) => {
     event.preventDefault();
     createBookFromForm();
     displayBooks();
@@ -92,15 +94,15 @@ displayForm.addEventListener("click", (event) => {
     toggleFormDisplay();
 });
 
-function toggleFormDisplay(){
-    if(formSection.classList.contains("hide")){
+function toggleFormDisplay() {
+    if (formSection.classList.contains("hide")) {
         formSection.classList.replace("hide", "display");
     } else {
         formSection.classList.replace("display", "hide");
     }
 }
 
-function createBookFromForm(){
+function createBookFromForm() {
     let formData = new FormData(bookForm);
     const title = formData.get("title");
     const author = formData.get("author");
