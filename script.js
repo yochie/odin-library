@@ -38,6 +38,7 @@ class Library {
     }
 
 }
+
 const myLibrary = new Library();
 
 function displayBooks() {
