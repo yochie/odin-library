@@ -139,7 +139,7 @@ button.display-form {
   border: none;
 }
 
-.form-section input:invalid {
+.form-section input:user-invalid {
   border: 3px solid red;
   outline: none;
 }
